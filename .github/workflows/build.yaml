@@ -22,7 +22,7 @@ on:
       - LICENSE
       - NOTICE
 env:
-  GO_VERSION: 1.22.4
+  GO_VERSION: 1.23.0
   KIND_VERSION: v0.11.1
   KIND_IMAGE: kindest/node:v1.21.1@sha256:69860bda5563ac81e3c0057d654b5253219618a22ec3a346306239bba8cfa1a6
 permissions: {}
@@ -32,7 +32,7 @@ concurrency:
 jobs:
   verify-code:
     name: Verify code
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -51,16 +51,14 @@ jobs:
         uses: golangci/golangci-lint-action@v6.0.1
         with:
           args: --verbose
-          version: v1.57.2
-          skip-pkg-cache: true
-          skip-build-cache: true
+          version: v2.7.2
       - name: Verify YAML code
         uses: ibiqlik/action-yamllint@v3
       - name: Vendor Go modules
         run: go mod vendor
   tests:
     name: Run tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -76,10 +74,6 @@ jobs:
             ${{ runner.os }}-go-
       - name: Run unit tests
         run: make test
-      - name: Upload code coverage
-        uses: codecov/codecov-action@v4
-        with:
-          files: ./coverage.txt
   e2e-testing:
     name: Run end to end testing
     runs-on: ubuntu-latest

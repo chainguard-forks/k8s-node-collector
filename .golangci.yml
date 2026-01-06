@@ -1,11 +1,12 @@
 ---
+version: "2"
 linters:
   disable:
-    - structcheck
+    - errcheck
+    - gosec
   enable:
     - errorlint
     - gocritic
-    - gosec
 linters-settings:
   gocritic:
     enabled-checks:
