@@ -1,6 +1,17 @@
 
 # k8s-node-collector
 
+> [!IMPORTANT]
+>
+> This is a supported replacement of the original [aquasecurity/k8s-node-collector](https://github.com/aquasecurity/k8s-node-collector) repository.
+>
+> Community contributions are not being accepted at this time. The documentation has been carried over directly from the original repository and may not reflect recent changes.
+>
+> We will make a best-effort attempt to address publicly known security vulnerabilities, including CVEs in dependencies and certain source code vulnerabilities when remediation can be achieved safely and with minimal risk. If mitigating a vulnerability would require extensive code changes (for example, adapting to a new API or significant refactoring), we will generally not make that change in order to avoid introducing regressions.
+>
+> Interested in a CVE-free container image of this project? [Contact Chainguard](https://www.chainguard.dev/contact).
+---
+
 [![GitHub Release][release-img]][release]
 [![Build Action][action-build-img]][action-build]
 [![Release snapshot Action][action-release-snapshot-img]][action-release-snapshot]
@@ -57,7 +68,7 @@ Each specification must include:
 for executing a specific spec need to pass the `--spec-name k8s-cis` and `--spec-version 1.23.0` flags
 
 If no collector spec has been specified. the node-collector will try to auto detect the matching spec by platform type and version as define in [version_mapping data](./pkg/collector/config/config.yaml)
-example:  
+example:
 
 ```yaml
 k8s:
@@ -150,7 +161,7 @@ kubectl apply -f job.yaml
 - Check k8s pod status
 
 ```sh
-kubectl get pods 
+kubectl get pods
 
 NAME                                     READY   STATUS      RESTARTS   AGE
 node-collector-ng2z7                          0/1     Completed   0          6m13s
