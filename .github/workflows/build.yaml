@@ -22,7 +22,7 @@ on:
       - LICENSE
       - NOTICE
 env:
-  GO_VERSION: 1.23.0
+  GO_VERSION: 1.26.0
   KIND_VERSION: v0.11.1
   KIND_IMAGE: kindest/node:v1.21.1@sha256:69860bda5563ac81e3c0057d654b5253219618a22ec3a346306239bba8cfa1a6
 permissions: {}
@@ -56,7 +56,7 @@ jobs:
         uses: golangci/golangci-lint-action@a4f60bb28d35aeee14e6880718e0c85ff1882e64 # v6.0.1
         with:
           args: --verbose
-          version: v2.7.2
+          version: v2.9.0
       - name: Verify YAML code
         uses: ibiqlik/action-yamllint@2576378a8e339169678f9939646ee3ee325e845c # v3.1.1
       - name: Vendor Go modules
